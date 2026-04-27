@@ -1,4 +1,4 @@
-const DEFAULT_SITE = "https://example.com";
+const DEFAULT_SITE = "https://p67gameapp.com.pk";
 
 function normalizeSiteUrl(raw: string): string {
   const trimmed = raw.trim();

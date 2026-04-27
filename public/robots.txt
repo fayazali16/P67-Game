@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://p67game.com.pk/sitemap.xml
+Sitemap: https://p67gameapp.com.pk/sitemap.xml
