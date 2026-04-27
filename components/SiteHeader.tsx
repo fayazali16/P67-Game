@@ -1,9 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useCallback, useState } from "react";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -13,14 +9,10 @@ const nav = [
 ];
 
 export function SiteHeader() {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const toggle = useCallback(() => setOpen((o) => !o), []);
-
   return (
     <header className="site-header">
       <div className="wrap header-inner">
-        <Link className="brand" href="/" onClick={() => setOpen(false)}>
+        <Link className="brand" href="/">
           <Image
             src="/assets/images/p67-header-brand.webp"
             alt="P67 Game Information Hub"
@@ -33,35 +25,18 @@ export function SiteHeader() {
           />
           <span className="sr-only">P67 Game Information Hub</span>
         </Link>
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="site-nav"
-          onClick={toggle}
-        >
-          Menu
-        </button>
-        <nav id="site-nav" aria-label="Primary">
-          <ul className={`nav-list${open ? " is-open" : ""}`}>
-            {nav.map(({ href, label }) => {
-              const isHome = href === "/";
-              const normalized = href.replace(/\/$/, "");
-              const current = isHome
-                ? pathname === "/" || pathname === ""
-                : pathname === href ||
-                  pathname === normalized ||
-                  pathname.startsWith(`${normalized}/`);
-              return (
+        <details className="nav-shell">
+          <summary className="nav-toggle">Menu</summary>
+          <nav id="site-nav" aria-label="Primary">
+            <ul className="nav-list">
+              {nav.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} aria-current={current ? "page" : undefined} onClick={() => setOpen(false)}>
-                    {label}
-                  </Link>
+                  <Link href={href}>{label}</Link>
                 </li>
-              );
-            })}
-          </ul>
-        </nav>
+              ))}
+            </ul>
+          </nav>
+        </details>
       </div>
     </header>
   );

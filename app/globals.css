@@ -171,6 +171,18 @@ h2 {
   font-weight: 600;
 }
 
+.nav-shell {
+  margin: 0;
+}
+
+.nav-shell > summary {
+  list-style: none;
+}
+
+.nav-shell > summary::-webkit-details-marker {
+  display: none;
+}
+
 .nav-list {
   display: flex;
   gap: 0.25rem 1.25rem;
@@ -254,7 +266,7 @@ h2 {
     font-size: 1rem;
   }
 
-  .nav-list.is-open {
+  .nav-shell[open] .nav-list {
     display: flex;
     margin-top: 0.65rem;
     padding: 0.35rem 0.75rem 0.65rem;
@@ -262,6 +274,16 @@ h2 {
     border-radius: var(--radius);
     background: var(--bg-elevated);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-shell {
+    display: block;
+  }
+
+  .nav-shell > summary {
+    display: none;
   }
 }
 
