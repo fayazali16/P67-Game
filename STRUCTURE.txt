@@ -1,0 +1,16 @@
+P67 Game Information Hub — Next.js (App Router)
+==============================================
+
+app/                   Routes, layouts, globals.css, robots.ts, sitemap.ts, manifest.ts
+app/page.tsx           /
+components/            SiteHeader (client), SiteFooter, JsonLd
+lib/                   site.ts, jsonld.ts
+public/
+  assets/              icon + og image (served at /assets/...)
+  uploads/images/      Optional user uploads
+
+Commands: npm run dev | npm run build | npm run start
+  If you see "Cannot find module './NNN.js'": npm run clean && npm run dev
+  Dev mode disables webpack filesystem cache (next.config.ts) to reduce stale chunks.
+  Use Next.js only (port 3000) for this app—not python -m http.server.
+Env: copy .env.example → .env.local and set NEXT_PUBLIC_SITE_URL
