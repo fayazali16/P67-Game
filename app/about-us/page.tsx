@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { aboutPageJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/about-us/";
@@ -38,9 +41,16 @@ export const metadata: Metadata = {
 };
 
 export default function AboutUsPage() {
+  const ld = aboutPageJsonLd(getSiteUrl());
+
   return (
-    <main id="main" className="wrap home-content">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content">
       <section className="home-section" aria-labelledby="about-title">
+        <p className="breadcrumb">
+          <Link href="/">Home</Link> / <span className="breadcrumb-current">About Us</span>
+        </p>
         <h1 id="about-title">About Us – P67 Game App</h1>
         <figure className="home-section-image">
           <Image
@@ -130,5 +140,6 @@ export default function AboutUsPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

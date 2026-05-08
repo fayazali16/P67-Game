@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { blogsCategoryJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/blog/category/blogs/";
@@ -47,11 +49,16 @@ const BLOG_CARDS = [
 ];
 
 export default function BlogsCategoryPage() {
+  const ld = blogsCategoryJsonLd(getSiteUrl());
+
   return (
-    <main id="main" className="wrap home-content blogs-category-page">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content blogs-category-page">
       <section className="home-section blogs-category-shell" aria-labelledby="category-title">
         <p className="breadcrumb">
-          <Link href="/">Home</Link> / <Link href="/blog/">Blog</Link>
+          <Link href="/">Home</Link> / <Link href="/blog/">Blogs</Link> /{" "}
+          <span className="breadcrumb-current">Guides category</span>
         </p>
         <h1 id="category-title" className="blogs-category-title">
           P67 BLOG
@@ -77,5 +84,6 @@ export default function BlogsCategoryPage() {
         </ul>
       </section>
     </main>
+    </>
   );
 }

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { homeFaqItems } from "@/lib/home-faq-data";
 import { HOME_HERO_BRAND_SRC } from "@/lib/seo-media";
+import { HOME_H1_TEXT } from "@/lib/seo-home";
 
 export { HOME_HERO_BRAND_SRC };
 const HOME_APK_URL = "https://p67vip.com?a=63149821";
@@ -46,7 +48,7 @@ export function HomeLongform() {
       <section className="hero wrap home-hero" aria-labelledby="home-hero-title">
         <div className="hero-grid hero-grid--featured">
           <div className="home-hero-copy">
-            <h1 id="home-hero-title">P67 Game Download APK 2026 - Real Money Earning App</h1>
+            <h1 id="home-hero-title">{HOME_H1_TEXT}</h1>
           </div>
           <figure className="home-feature-wrap">
             <Image
@@ -68,7 +70,8 @@ export function HomeLongform() {
             Millions of players across the country open this app daily to play card games, mini-games,
             and casino classics while earning real PKR from home. Whether you&apos;re new to online
             earning apps or already familiar with platforms like Aviator and Teen Patti, this guide
-            covers everything you need to know about P67 Game in 2026.
+            covers everything you need to know about P67 Game in 2026 — with deeper walkthroughs on our{" "}
+            <Link href="/blog/">Blogs guides hub</Link>.
           </p>
         </div>
       </section>
@@ -234,7 +237,7 @@ export function HomeLongform() {
           <p>
             P67 Game is distributed as an APK file since it&apos;s not available on the Google Play
             Store. If you want the direct installation walkthrough, start with{" "}
-            <Link href="/p67-download/">PK67 download</Link>. Follow these steps carefully:
+            <Link href="/p67-download/">P67 download</Link>. Follow these steps carefully:
           </p>
           <ol className="home-ol">
             <li>
@@ -559,34 +562,12 @@ export function HomeLongform() {
         <section className="home-section" aria-labelledby="home-faq">
           <h2 id="home-faq">Frequently Asked Questions</h2>
           <dl className="home-faq-dl">
-            <div className="home-faq-item">
-              <dt>Is P67 Game real money?</dt>
-              <dd>Yes. Players deposit real PKR and can withdraw real PKR via JazzCash, EasyPaisa, or bank transfer.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>What is the minimum withdrawal amount?</dt>
-              <dd>100 PKR per transaction.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>Can I play P67 on PC?</dt>
-              <dd>The app is designed for Android and iOS. PC access via an Android emulator like BlueStacks works, but the official platform doesn&apos;t support direct PC play.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>How long do withdrawals take?</dt>
-              <dd>JazzCash and EasyPaisa withdrawals typically process within minutes. Bank transfers may take a few hours.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>Is there a referral earning limit?</dt>
-              <dd>No fixed limit. The more active friends you refer, the more you earn across multiple milestones.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>What happens if I forget my password?</dt>
-              <dd>Tap &quot;Forgot Password&quot; on the login screen, enter your phone number, and reset via OTP.</dd>
-            </div>
-            <div className="home-faq-item">
-              <dt>Is P67 available outside Pakistan?</dt>
-              <dd>The platform is built for Pakistani users with local payment integration. Access from other countries may be limited.</dd>
-            </div>
+            {homeFaqItems.map((item) => (
+              <div className="home-faq-item" key={item.question}>
+                <dt>{item.question}</dt>
+                <dd>{item.answer}</dd>
+              </div>
+            ))}
           </dl>
         </section>
 

@@ -44,7 +44,7 @@ export function absoluteUrl(path: string): string {
 
 export const SITE_NAME = "P67 Game Information Hub";
 export const THEME_COLOR = "#0f766e";
-export const LAST_MODIFIED = "2026-04-19";
+export const LAST_MODIFIED = "2026-05-09";
 
 /** APK download URL — set NEXT_PUBLIC_APK_URL in .env.local (empty = button shown disabled) */
 export function getApkDownloadUrl(): string | undefined {

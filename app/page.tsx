@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { HomeLongform, HOME_HERO_BRAND_SRC } from "@/components/home/HomeLongform";
 import { JsonLd } from "@/components/JsonLd";
 import { homePageJsonLd } from "@/lib/jsonld";
+import { HOME_META_DESCRIPTION, HOME_META_TITLE } from "@/lib/seo-home";
 import { getSiteUrl } from "@/lib/site";
-
-const META_TITLE = "P67 Game Download APK 2026 – Real Money Earning App";
-const META_DESCRIPTION =
-  "Download P67 Game APK for Android & iOS in 2026. Play casino games, earn real money via JazzCash & EasyPaisa. Full guide to register, deposit & withdraw.";
 
 const KEYWORDS = [
   "P67 Game",
@@ -21,12 +18,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${getSiteUrl()}/`,
   },
-  title: META_TITLE,
-  description: META_DESCRIPTION,
+  title: HOME_META_TITLE,
+  description: HOME_META_DESCRIPTION,
   keywords: KEYWORDS,
   openGraph: {
-    title: META_TITLE,
-    description: META_DESCRIPTION,
+    title: HOME_META_TITLE,
+    description: HOME_META_DESCRIPTION,
     images: [
       {
         url: HOME_HERO_BRAND_SRC,
@@ -39,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: META_TITLE,
-    description: META_DESCRIPTION,
+    title: HOME_META_TITLE,
+    description: HOME_META_DESCRIPTION,
     images: [HOME_HERO_BRAND_SRC],
   },
 };

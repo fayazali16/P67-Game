@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/blog/p67-game-deposit/";
@@ -46,9 +48,31 @@ export const metadata: Metadata = {
 };
 
 export default function Pk67DepositPostPage() {
+  const ld = blogPostingJsonLd(getSiteUrl(), {
+    path,
+    headline: META_TITLE,
+    description: META_DESCRIPTION,
+    imagePath: FEATURE_IMAGE,
+    keywords: [
+      "P67 Game Deposit",
+      "P67 deposit guide",
+      "P67 JazzCash deposit",
+      "P67 EasyPaisa deposit",
+      "P67 deposit bonus",
+      "P67 payment methods",
+    ],
+  });
+
   return (
-    <main id="main" className="wrap home-content">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content">
       <section className="home-section" aria-labelledby="post-title">
+        <p className="breadcrumb">
+          <Link href="/">Home</Link> / <Link href="/blog/">Blogs</Link> /{" "}
+          <Link href="/blog/category/blogs/">Guides category</Link> /{" "}
+          <span className="breadcrumb-current">Deposit Guide</span>
+        </p>
         <h1 id="post-title">P67 Game Deposit Guide 2026 – Methods, Limits &amp; Bonuses</h1>
         <figure className="home-section-image">
           <Image
@@ -85,7 +109,7 @@ export default function Pk67DepositPostPage() {
           reflect.
         </p>
         <p>
-          This article supports the main <Link href="/">PK67 Game</Link> pillar guide for complete platform setup.
+          This article supports the main <Link href="/">P67 Game</Link> pillar guide for complete platform setup.
         </p>
         <p>
           Whether you are making your first deposit or troubleshooting a failed transaction, this is the
@@ -348,5 +372,6 @@ export default function Pk67DepositPostPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

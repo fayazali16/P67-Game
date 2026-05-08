@@ -28,6 +28,9 @@ export function SiteFooter() {
             <h2>Important Links</h2>
             <ul>
               <li>
+                <Link href="/blog/">Blogs</Link>
+              </li>
+              <li>
                 <Link href="/about-us/">About Us</Link>
               </li>
               <li>

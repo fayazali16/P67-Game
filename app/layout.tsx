@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   },
   description:
     "Independent informational hub on P67 Game and online betting: platform basics, security signals, legality awareness, payments, and responsible gambling resources.",
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim()
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION.trim() } }
+    : {}),
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
   robots: {

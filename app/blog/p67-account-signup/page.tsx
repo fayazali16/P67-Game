@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/blog/p67-account-signup/";
@@ -46,9 +48,31 @@ export const metadata: Metadata = {
 };
 
 export default function P67AccountSignupPostPage() {
+  const ld = blogPostingJsonLd(getSiteUrl(), {
+    path,
+    headline: META_TITLE,
+    description: META_DESCRIPTION,
+    imagePath: FEATURE_IMAGE,
+    keywords: [
+      "P67 Account Signup",
+      "P67 signup guide",
+      "P67 registration",
+      "P67 OTP signup",
+      "P67 referral code",
+      "P67 welcome bonus",
+    ],
+  });
+
   return (
-    <main id="main" className="wrap home-content">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content">
       <section className="home-section" aria-labelledby="post-title">
+        <p className="breadcrumb">
+          <Link href="/">Home</Link> / <Link href="/blog/">Blogs</Link> /{" "}
+          <Link href="/blog/category/blogs/">Guides category</Link> /{" "}
+          <span className="breadcrumb-current">Account Signup Guide</span>
+        </p>
         <h1 id="post-title">P67 Account Signup Guide 2026 – Register in 2 Minutes</h1>
         <figure className="home-section-image">
           <Image
@@ -82,7 +106,7 @@ export default function P67AccountSignupPostPage() {
           is one of the most straightforward among Pakistani earning apps — no lengthy forms, no email confirmation
           loops, no document uploads just to register. This guide walks through every detail of the registration
           process, the bonuses you unlock at signup, how to use a referral code, and how to fix the most common
-          errors new users encounter. If you are new, begin with the <Link href="/">PK67 Game</Link> main guide.
+          errors new users encounter. If you are new, begin with the <Link href="/">P67 Game</Link> main guide.
         </p>
       </section>
 
@@ -364,5 +388,6 @@ export default function P67AccountSignupPostPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

@@ -1,38 +1,41 @@
-/** Homepage FAQ — text must match visible FAQ on `/` for FAQPage JSON-LD. */
-export const homeFaqItems = [
+/**
+ * Homepage FAQ — must exactly match visible FAQ markup on `/` and `FAQPage` JSON-LD.
+ */
+export type HomeFaqItem = { question: string; answer: string };
+
+export const homeFaqItems: HomeFaqItem[] = [
   {
-    question: "What is P67 Game?",
+    question: "Is P67 Game real money?",
     answer:
-      "P67 Game is the Android installation file for P67 Game — the three-card Pakistani card game popular in Pakistan. Because it's distributed as an APK rather than through the Play Store, you install it directly from the official website.",
+      "Yes. Players deposit real PKR and can withdraw real PKR via JazzCash, EasyPaisa, or bank transfer.",
   },
   {
-    question: "Is P67 Game free to download?",
-    answer:
-      "Yes. The APK file is always free. Real-money features require a deposit, but most apps offer free chips or a welcome bonus that lets you play practice tables without spending anything.",
+    question: "What is the minimum withdrawal amount?",
+    answer: "100 PKR per transaction.",
   },
   {
-    question: "Can I play P67 Game without real money?",
+    question: "Can I play P67 on PC?",
     answer:
-      "Yes. All major P67 Game apps include practice or free-chip tables where no real money changes hands. These are ideal for learning hand rankings and variations before you commit a deposit.",
+      "The app is designed for Android and iOS. PC access via an Android emulator like BlueStacks works, but the official platform doesn't support direct PC play.",
   },
   {
-    question: 'How do I fix "App Not Installed" error?',
+    question: "How long do withdrawals take?",
     answer:
-      "This usually means either storage space is too low or Unknown Sources is not fully enabled. Clear at least 200MB of storage, double-check your security settings, and re-download the APK fresh from the official site.",
+      "JazzCash and EasyPaisa withdrawals typically process within minutes. Bank transfers may take a few hours.",
   },
   {
-    question: "Can I play P67 Game on iPhone?",
+    question: "Is there a referral earning limit?",
     answer:
-      "P67 Game is Android-only. iPhone users need to search the App Store for the iOS version, or access a web-based version through the official site using Safari. Some platforms offer browser-based play that works on all devices.",
+      "No fixed limit. The more active friends you refer, the more you earn across multiple milestones.",
   },
   {
-    question: "What is the best hand in P67 Game?",
+    question: "What happens if I forget my password?",
     answer:
-      "Three Aces (A-A-A) is the best hand in Classic mode — a Trail of the highest rank. In Muflis mode, the ranking flips, making a High Card hand the strongest possible holding.",
+      'Tap "Forgot Password" on the login screen, enter your phone number, and reset via OTP.',
   },
   {
-    question: "Why is my withdrawal pending?",
+    question: "Is P67 available outside Pakistan?",
     answer:
-      "First-time withdrawals require identity verification, which can add 24 to 48 hours. After that, standard withdrawals through EasyPaisa or JazzCash typically complete within 15 minutes. Contact support with your transaction screenshot if it exceeds two hours.",
+      "The platform is built for Pakistani users with local payment integration. Access from other countries may be limited.",
   },
-] as const;
+];

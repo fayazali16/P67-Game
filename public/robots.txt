@@ -1,5 +1,10 @@
 # robots.txt for p67gameapp.com.pk
 
+# Indexing checklist (technical):
+# - Use an HTTPS URL-prefix property for https://p67gameapp.com.pk/ in Google Search Console (not http:// unless you redirect everywhere).
+# - Submit https://p67gameapp.com.pk/sitemap.xml under Sitemaps after verification.
+# - This file allows `User-agent: *` to crawl `/`; Googlebot explicitly has Allow: /. Do not disallow `/_next/` (needed for rendered pages).
+
 # ============================================
 # AI CONTENT USAGE POLICY
 # ============================================

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { blogHubJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/blog/";
@@ -47,8 +49,12 @@ const BLOG_CARDS = [
 ];
 
 export default function BlogIndexPage() {
+  const ld = blogHubJsonLd(getSiteUrl());
+
   return (
-    <main id="main" className="wrap home-content blogs-category-page">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content blogs-category-page">
       <section className="home-section blogs-category-shell" aria-labelledby="blog-title">
         <p className="breadcrumb">
           <Link href="/">Home</Link> / Blog
@@ -77,5 +83,6 @@ export default function BlogIndexPage() {
         </ul>
       </section>
     </main>
+    </>
   );
 }

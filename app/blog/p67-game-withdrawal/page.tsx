@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/blog/p67-game-withdrawal/";
@@ -46,9 +48,31 @@ export const metadata: Metadata = {
 };
 
 export default function Pk67WithdrawalPostPage() {
+  const ld = blogPostingJsonLd(getSiteUrl(), {
+    path,
+    headline: META_TITLE,
+    description: META_DESCRIPTION,
+    imagePath: FEATURE_IMAGE,
+    keywords: [
+      "P67 Game Withdrawal",
+      "P67 withdrawal guide",
+      "P67 JazzCash withdrawal",
+      "P67 EasyPaisa cashout",
+      "P67 withdrawal limits",
+      "P67 withdrawal problems",
+    ],
+  });
+
   return (
-    <main id="main" className="wrap home-content">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content">
       <section className="home-section" aria-labelledby="post-title">
+        <p className="breadcrumb">
+          <Link href="/">Home</Link> / <Link href="/blog/">Blogs</Link> /{" "}
+          <Link href="/blog/category/blogs/">Guides category</Link> /{" "}
+          <span className="breadcrumb-current">Withdrawal Guide</span>
+        </p>
         <h1 id="post-title">P67 Game Withdrawal Guide 2026 – Fast &amp; Easy Cash Out</h1>
         <figure className="home-section-image">
           <Image
@@ -82,7 +106,7 @@ export default function Pk67WithdrawalPostPage() {
           what matters. For new players, the P67 Game withdrawal process can feel unclear at first, especially
           when terms like KYC, wager requirements, and transaction limits come up. This guide walks through
           every part of P67 Game withdrawal, from the first cashout to fixing common errors, so you know exactly
-          what to expect before tapping that button. This supports the main <Link href="/">PK67 Game</Link>{" "}
+          what to expect before tapping that button. This supports the main <Link href="/">P67 Game</Link>{" "}
           complete guide.
         </p>
       </section>
@@ -273,6 +297,7 @@ export default function Pk67WithdrawalPostPage() {
           <Link href="/blog/category/blogs/">Browse more P67 Game guides in the Blogs category</Link>
         </p>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

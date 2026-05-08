@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { downloadGuideJsonLd } from "@/lib/jsonld";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 
 const path = "/p67-download/";
@@ -47,9 +49,21 @@ export const metadata: Metadata = {
 };
 
 export default function DownloadPage() {
+  const ld = downloadGuideJsonLd(getSiteUrl(), {
+    headline: META_TITLE,
+    description: META_DESCRIPTION,
+    imagePath: FEATURE_IMAGE,
+  });
+
   return (
-    <main id="main" className="wrap home-content">
+    <>
+      <JsonLd data={ld as unknown as Record<string, unknown>} />
+      <main id="main" className="wrap home-content">
       <section className="home-section" aria-labelledby="download-title">
+        <p className="breadcrumb">
+          <Link href="/">Home</Link> /{" "}
+          <span className="breadcrumb-current">P67 Download Guide</span>
+        </p>
         <h1 id="download-title">P67 Download 2026 - APK for Android & iOS [Free]</h1>
         <figure className="home-section-image">
           <Image
@@ -81,7 +95,7 @@ export default function DownloadPage() {
         </div>
         <p>
           You searched for P67 download — so let&apos;s skip the background story and get straight to
-          it. This post supports the <Link href="/">PK67 Game</Link> pillar and covers exactly how to
+          it. This post supports the <Link href="/">P67 Game</Link> pillar and covers exactly how to
           download P67 on Android and iPhone, how to install it
           without errors, and what to do the moment you open it for the first time.
         </p>
@@ -369,5 +383,6 @@ export default function DownloadPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }
